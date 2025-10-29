@@ -41,8 +41,8 @@ I know, It doesn't match it very much, or even at all. I gave it my all though.
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Add solution URL here](https://github.com/Ehiejakhian/Frontend-Mentor-Loopstudios-landing-page)
+- Live Site URL: [Add live site URL here](https://ehiejakhian.github.io/Frontend-Mentor-Loopstudios-Landing-page/)
 
 ## My process
 I started this one by opening the design images in GIMP (GNU Image Manipulation Program). I measure the paddings, gutters (gaps) and sizes of responsive elements. These help me create responsive functions and mixins. Then, I write my HTML, and give class names using BEM which I recently learned. I use SCSS to create my styling so BEM makes it easier.
