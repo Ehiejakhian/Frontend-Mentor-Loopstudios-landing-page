@@ -1,0 +1,523 @@
+
+@font-face {
+  font-family: 'alata';
+  src: url('../font/Alata-Regular.ttf');
+}
+@font-face {
+  font-family: 'josefin';
+  src: url('../font/JosefinSans-VariableFont_wght.ttf');
+}
+
+$mobile: 375px;
+$tab: 700px;
+$big-tab: 900px;
+$desktop: 1440px;
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$grey-200: hsl(0, 0%, 85%);
+$font-size: 15px;
+$pd: clamp(10%, 5dvw, 20%);
+
+@mixin df($j:normal, $a:normal, $fl:column, $g:0) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+  flex-flow: $fl;
+  gap: $g;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: $font-size;
+  font-family: 'alata';
+}
+img {
+  width: 100%;
+  &.mobile {
+    display: block;
+  }
+  &.desktop {
+    display: none;
+  }
+  @media (min-width: $tab) {
+    &.mobile {
+      display: none;
+    }
+    &.desktop {
+      display: block;
+    }
+  }
+}
+h1,h2,h3 {
+  font-family: 'josefin';
+  text-transform: uppercase;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5dvw, 4.5rem);
+}
+h2 {
+  font-size: clamp(2rem, 5dvw, 3rem);
+}
+h3 {
+  font-size: clamp(1.5rem, 5dvw, 1.7rem);
+}
+
+header {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  color: #fff;
+  background: transparent;
+  padding: clamp(20px, 5vw, 40px) $pd;
+
+  .header {
+    @include df(space-between, center, row, 20px);
+    
+    & img {
+      width: auto;
+    }
+    .logo {
+      z-index: 10;
+    }
+    input {
+      display: none;
+    }
+    nav {
+      padding: clamp(20px, 5vw, 40px) $pd;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9;
+      background-color: #000;
+      left: 100%;
+      transition: all .75s;
+      @include df(normal, normal, column, 50px);
+      label {
+        align-self: flex-end;
+        margin-top: 5px;
+      }
+      ul {
+        list-style: none;
+        margin: auto 0 auto 0;
+        @include df(normal, normal, column, 20px);
+        li {
+          a {
+            @extend h2;
+            text-transform: uppercase;
+            font-family: 'josefin';
+            text-decoration: none;
+            color: #fff;
+            transition: all .3s;
+  
+            &:hover {
+              color: rgb(223, 9, 223);
+            }
+          }
+        }
+      }
+    }
+    input:checked ~ nav {
+      left: 0;
+    }
+  
+    @media (min-width: $tab) {
+      max-width: 1200px;
+      margin: auto;
+      input,label,.attribution {
+        display: none;
+      }
+      nav {
+        padding: 0;
+        position: static;
+        background-color: inherit;
+        @include df(normal, center, row, 0);
+        label {
+          display: none;
+        }
+        ul {
+          @include df(normal, center, row, 2rem);
+          li {
+            a {
+              @include df(normal, center, column, 0rem);
+              text-transform: capitalize;
+              font: inherit;
+              position: relative;
+  
+              &::after {
+                position: absolute;
+                content: '';
+                height: 2px;
+                border-radius: 3px;
+                background-color: #fff;
+                bottom: -100%;
+                width: 0;
+                opacity: 0;
+                transition: all .5s;
+              }
+              &:hover {
+                color: inherit;
+                &::after {
+                  width: 200%;
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  padding: auto $pd;
+  @include df(center, start, column, 0);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+    margin: auto $pd;
+    width: calc(100% - 2*$pd);
+    @include df(center, start, column, 0);
+
+
+    &__line {
+      width: 100%;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-family: 'josefin';
+      font-weight: 300;
+      line-height: 1.2;
+      border: 2px solid;
+      padding: calc(10px + 3vw);
+    }
+  }
+  @media (min-width: $tab) {
+    &__content {
+      max-width: 1200px;
+      align-self: center;
+      &__line {
+        width: 60%;
+        align-self: start;
+      }
+    }
+  }
+}
+
+.main-vr {
+  padding: 50px $pd;
+  @include df(center, center, column, 30px);
+  @media (min-width: $big-tab) {
+    min-height: 700px;
+  }
+  .vr {
+    width: 100%;
+    margin: auto;
+    max-width: 1200px;
+    @include df(center, center, column, 30px);
+    &__content {
+      padding: 20px;
+      @include df(center, center, column, 20px);
+      text-align: center;
+      p {
+        color: grey;
+        line-height: 1.6;
+      }
+    }
+    @media (min-width: $tab) {
+      position: relative;
+      @include df(normal, end, row, 0px);
+      img {
+        align-self: flex-start;
+        width: auto;
+        margin-left: 0;
+        max-width: 100%;
+        left: 0;
+      }
+      &__content {
+        max-height: 100%;
+        min-width:400px;
+        text-align: left;
+        background: #fff;
+        position: absolute;
+        width: 40%;
+        bottom: 0;
+        right: 0;
+        padding: 50px 0px 0 50px;
+        @include df(normal, normal, column, 20px);
+
+        @media (min-width: $tab) and (max-width: 1200px) {
+          h2 {
+            font-size: 2.2rem;
+          }
+        }
+
+        @media (min-width: $big-tab) {
+          width: 50%;
+          padding: clamp(50px, 5dvw, 100px) 0px 0 clamp(50px, 5dvw, 100px);
+        }
+      }
+    }
+  }
+}
+
+.CR {
+  padding: 0 $pd 100px $pd;
+  .creations {
+    margin-top: 70px;
+    @include df(center, center, column, 30px);
+    
+    &__grid {
+      width: 100%;
+      @include df(normal, normal, column, 20px);
+      
+      &__item {
+        position: relative;
+        width: 100%;
+        height: 150px;
+        cursor: pointer;
+        transition: all .3s;
+        
+        &::after {
+          top: 0;
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background-image: linear-gradient(90deg,rgba(0,0,0,.5), transparent);
+          transition: all .3s;
+        }
+        & img {
+          height: 100%;
+          object-fit: cover;
+        }
+        & h3 {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          color: #fff;
+          z-index: 1;
+          transition: all .3s;
+          @media (min-width: 1200px) {
+            font-size: 2rem;
+            bottom: 30px;
+            left: 30px;
+          }
+        }
+        &:hover {
+          &::after {
+            background-image: linear-gradient(90deg, rgba(187, 182, 182, 0.7));
+          }
+          h3 {
+            color: $black;
+          }
+        }
+      }
+    }
+    &__button {
+      width: 200px;
+      padding: 15px 10px;
+      font: inherit;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      background-color: inherit;
+      border: 2px solid $black;
+      transition: all .3s;
+      cursor: pointer;
+  
+      &:hover {
+        color: $white;
+        background-color: $black;
+      }
+    }
+  
+    @media (min-width: $tab) {
+      padding: 0;
+      width: 100%;
+      max-width: 1200px;
+      margin: 70px $pd 100px $pd;
+      place-self: center;
+      display: grid;
+      justify-content: normal;
+      align-items: center;
+      gap: 50px 20px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto auto;
+      &__button {
+        grid-column: -1/span 1;
+        grid-row: 1 / 2;
+        // height: ;
+      }
+      &__grid {
+        grid-column: 1/4;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+        @media (min-width: $big-tab) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        
+  
+        &__item {
+          position: relative;
+          object-fit: contain;
+          height: auto;
+          
+          &::after {
+            content: '';
+            top: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-image: linear-gradient(180deg, transparent,rgba(0,0,0,.8));
+          }
+          & img {
+            object-fit: contain;
+            height: auto;
+          }
+          h3 {
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $black;
+  padding: 50px $pd;
+  @include df(center, center, column, 0px);
+  .footer {
+    width: 100%;
+    color: $white;
+    @include df(center, center, column, 30px);
+    .section1 {
+      @include df(center, center, column, 30px);
+      img {
+        width: auto;
+      }
+      ul {
+        list-style: none;
+        @include df(center, center, column, 20px);
+        a {
+          text-decoration: none;
+          color: inherit;
+          position: relative;
+          @include df(center, center, row, 10px);
+  
+          &::after {
+            position: absolute;
+            content: '';
+            height: 2px;
+            border-radius: 3px;
+            background-color: #fff;
+            bottom: -10px;
+            margin: 0 auto;
+            width: 0;
+            opacity: 0;
+            transition: all .5s;
+          }
+          &:hover {
+            color: inherit;
+            &::after {
+              width: 2rem;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    .section2 {
+      @include df(center, center, column, 20px);
+      .social-links {
+        list-style: none;
+        @include df(center, center, row, 10px);
+        
+        li {
+          a {
+            text-decoration: none;
+            color: inherit;
+            font-size: 2rem;
+            position: relative;
+            @include df(center, center, row, 10px);
+  
+            &::after {
+              position: absolute;
+              content: '';
+              height: 2px;
+              border-radius: 3px;
+              background-color: #fff;
+              bottom: -10px;
+              margin: 0 auto;
+              width: 0;
+              opacity: 0;
+              transition: all .5s;
+            }
+            &:hover {
+              color: inherit;
+              &::after {
+                width: 2rem;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+      .copy {
+        text-align: center;
+        color: grey;
+      }
+    }
+  
+    @media (min-width: $tab) {
+      max-width: 1200px;
+      padding: 50px 0;
+      @include df(space-between, start, row, 20px);
+      .section1 {
+        @include df(normal, flex-start,column, 20px);
+        ul {
+          @include df(normal, center, row, 20px);
+        }
+      }
+      .section2 {
+        @include df(right, flex-end,column, 20px);
+        ul {
+          @include df(right, center, row, 20px);
+        }
+      }
+    }
+  }
+}
+
+.attribution {
+  text-align: center;
+  a {
+    color: grey;
+    text-decoration: none;
+    border-bottom: 2px solid;
+  }
+}
