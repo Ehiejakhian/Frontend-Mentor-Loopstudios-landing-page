@@ -85,7 +85,7 @@ I want to thank everyone out there who takes their time to put out useful coding
 Let's gist!
 - Website portfiolo - [Ehi Ejakhian](https://ehiejakhian.github.io/)
 - Frontend Mentor - [@EhiEjakhian](https://www.frontendmentor.io/profile/EhiEjakhian)
-- Chat me on Whatsapp - [Ehi Ejakhian](https://wa.me/+2348142340182?text=Hello%20Ehi%20.%20I%20checked%20your%20News%20Homepage%20solution)
+- Chat me on Whatsapp - [Ehi Ejakhian](https://wa.me/+2348142340182?text=Hello%20Ehi%20.%20I%20checked%20your%20Frontend-Mentor-Loopstudios-Landing-page/%20solution)
 - LinkedIn - [Ejakhian Ehi](https://ng.linkedin.com/in/ehi-ejakhian-2302a7318)
 
 I'm also an aspiring comic and sketch artist, so if you have any gigs or if you can relate, check me up on whatsapp and see my art.
